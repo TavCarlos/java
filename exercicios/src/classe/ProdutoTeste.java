@@ -21,5 +21,13 @@ public class ProdutoTeste {
 		p2.nome = "Caneta Preta";
 		p2.preco = 12.56;
 		p2.desconto = 0.29;
+		
+		//utilizando o método
+		double precoFinal1 = p1.precoComDesconto();
+		double precoFinal2 = p2.precoComDesconto(0.2); //com desconto do gerente. Passando o desconto como parâmetro.
+		
+		System.out.printf("Produto: %s\nPreço com desconto: %.2f\nProduto: "
+				+ "%s\nPreço com desconto: %.1f", p1.nome,precoFinal1, p2.nome, precoFinal2 );
+		
 	}
 }
