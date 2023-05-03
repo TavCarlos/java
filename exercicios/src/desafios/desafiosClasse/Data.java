@@ -11,7 +11,24 @@ public class Data { //Classe Data
 	int dia;
 	int mes;
 	int ano;
+
 	
+	//construtores
+	Data(){
+		dia = 1; //caso o usuário não informe os valores, esse será o valor padrão.
+		mes = 1;
+		ano = 1970;
+	}
+	
+	Data(int diaInicial, int mesInicial, int anoInicial){
+		dia = diaInicial;
+		mes = mesInicial;
+		ano = anoInicial;
+		
+	}
+	
+	
+	//tipo retorno string do método obterDataFormatada
 	String obterDataFormatada() {
 		String stringDia = Integer.toString(dia);
 		String stringMes = Integer.toString(mes);
@@ -26,4 +43,12 @@ public class Data { //Classe Data
 	String dataFormatada() {
 		return dia+"/"+mes+"/"+ano;
 	}
+	
+	//outra forma de fazer:
+	String dataformatar() {
+		return String.format("%d/%d/%d", dia, mes, ano); //irá formatar as variável na string especificada.
+	}
+	 
+	
+	
 }
