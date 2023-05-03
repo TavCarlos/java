@@ -12,11 +12,12 @@ public class ProdutoTeste {
 		
 		//criando duas instâncias(objetos) para essa classe
 		//tipo(variável do tipo produto) -> nome_variável -> new -> nome do construtor.
-		Produto p1 = new Produto();
-		p1.nome = "Notebook";
-		p1.preco = 4356.89;
-		p1.desconto = 0.25;
+		Produto p1 = new Produto("Notebook", 4356.89, 0.25);
+		//p1.nome = "Notebook";
+		//p1.preco = 4356.89;
+		//p1.desconto = 0.25;
 		
+		//utilizando o construtor padrão:
 		Produto p2 = new Produto();
 		p2.nome = "Caneta Preta";
 		p2.preco = 12.56;
@@ -28,6 +29,5 @@ public class ProdutoTeste {
 		
 		System.out.printf("Produto: %s\nPreço com desconto: %.2f\nProduto: "
 				+ "%s\nPreço com desconto: %.1f", p1.nome,precoFinal1, p2.nome, precoFinal2 );
-		
 	}
 }

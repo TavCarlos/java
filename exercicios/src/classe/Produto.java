@@ -19,7 +19,17 @@ public class Produto { //classe
  * novos objetos, os objetos criados terão esses 3 atributos. 
  */
 	
+	//criando construtor
+	Produto(String nomeInicial, double precoInicial, double descontoInicial){ //criando de forma explícita com parâmetro a String nomeInicial
+		nome = nomeInicial; //o atributo nome receberá o parâmetro nomeInicial 
+		preco = precoInicial; 
+		desconto = descontoInicial;
+	}
 	
+	//Quando você cria um construtor, você automaticamente não pode usar mais o construtor padrão, para isso, é preciso:
+	Produto(){
+		
+	}
 	
 	//Criando um Método
 	double precoComDesconto(){ //não tem parâmetro pois dentro do objeto 'Produto' já tenho tudo que preciso para calc. o desconto
