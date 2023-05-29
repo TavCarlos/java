@@ -35,7 +35,15 @@ public class Reduce3 {
 			.filter(aprovado)
 			.map(apenasNota)
 			.reduce(new Media(), calcularMedia, combinarMedia);
-		//valor iniciar , acumulador, combinador.
+		/*
+		 New Media() É a instância da Classe media e representa o valor inicial/acumulador do reduce.
+		 Assim, tanto 'calcularMedia' e 'combinarMedia' recebem como parâmetro o 'new Media()'
+		 Com isso, 'media' na função 'calcularMedia' e 'm1' na função calcularMedia recebem 'new Media()';
+		 Essa instância serve para que mantenha acumulado tanto o valor total quanto a quantidade de notas;
+		 
+		 calcularMedia é aplicado a cada elemento do fluxo (alunosAprovados) juntamente com o acumulador(Instância de Media)
+		 Logo, o acumulador tem quanto o somatório das notas quanto a quantidade de notas.
+		 */
 		
 		System.out.println("A media dos Aprovados da Turma é: " + media.getValor());
 	}
