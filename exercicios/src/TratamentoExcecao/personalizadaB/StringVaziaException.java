@@ -1,8 +1,8 @@
-package TratamentoExcecao.personalizadaA;
+package TratamentoExcecao.personalizadaB;
 
-//Exeções não checadas ou não verificadas -> não exigem que sejam tratadas explicitamente, embora possam ser tratadas se necessário.
+//EXCEÇÃO CHECADA - herda diretamente de exception, ou seja, deve ser tratada diretamente pelos códidos que a chama.
 @SuppressWarnings("serial")
-public class StringVaziaException extends RuntimeException{
+public class StringVaziaException extends Exception{
 
 	private String nomeDoAtributo;
 	
