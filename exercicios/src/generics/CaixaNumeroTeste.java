@@ -12,7 +12,6 @@ public class CaixaNumeroTeste {
 		System.out.println(caixaB.getCoisa());
 		
 		
-		
 		CaixaNumero<Double> caixaC = new CaixaNumero<>();
 		caixaC.setCoisa(3.1415);
 		System.out.println(caixaC.getCoisa());
