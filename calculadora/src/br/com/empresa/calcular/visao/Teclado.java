@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -12,7 +14,7 @@ import javax.swing.JPanel;
 import br.com.empresa.calcular.modelo.Memoria;
 
 @SuppressWarnings("serial")
-public class Teclado extends JPanel implements ActionListener{ //actionListener -> manipular dados que vem do evento
+public class Teclado extends JPanel implements ActionListener, KeyListener{ //actionListener -> manipular dados que vem do evento
 
 	private final Color COR_CINZA_ESCURO = new Color(68, 68, 68);
 	private final Color COR_CINZA_CLARO = new Color(98, 98 , 98);
@@ -22,6 +24,8 @@ public class Teclado extends JPanel implements ActionListener{ //actionListener 
 		GridBagLayout layout = new GridBagLayout(); //gerenciador de layout flexível
 		GridBagConstraints constraints = new GridBagConstraints(); //permite controlar como os componentes são posicionados nessa grade
 		
+		setFocusable(true);
+		addKeyListener(this);
 		
 		constraints.weightx = 1; //permite que o componente preencha o espaço adicional caso exista algum
 		constraints.weighty = 1;
@@ -63,6 +67,7 @@ public class Teclado extends JPanel implements ActionListener{ //actionListener 
 			constraints.gridy = y;
 			Botao botao = new Botao(texto, cor);
 			botao.addActionListener(this);
+
 			
 			add(botao, constraints);
 		}
@@ -72,6 +77,30 @@ public class Teclado extends JPanel implements ActionListener{ //actionListener 
 			if(e.getSource() instanceof JButton) { //verifica se o evento foi gerado por um botão
 				JButton botao = (JButton) e.getSource();//usado para obter a referência ao botão específico que foi clicado
 				Memoria.getInstance().processarNotificarObservadores(botao.getText());
+				transferFocus(); //após clicar no botão ele tira o foco do botão
+				requestFocusInWindow(); //coloca o foco no Jpanel de Teclado
 			}
 		}
+		
+		@Override
+			public void keyTyped(KeyEvent e) {
+			if(e.getKeyChar() == KeyEvent.VK_ESCAPE || e.getKeyChar() == 'c') {
+				Memoria.getInstance().processarNotificarObservadores("AC");
+			}else if(e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+				Memoria.getInstance().processarNotificarObservadores("apagar");
+			}else if(e.getKeyChar() == 'n'){
+				Memoria.getInstance().processarNotificarObservadores("+/-");
+			}else if(e.getKeyChar() == KeyEvent.VK_ENTER){
+				Memoria.getInstance().processarNotificarObservadores("=");
+			} else {
+				char tecla = e.getKeyChar();
+				String texto = String.valueOf(tecla);
+				Memoria.getInstance().processarNotificarObservadores(texto);
+			}
+		}
+		@Override
+			public void keyReleased(KeyEvent e) {}
+		@Override
+			public void keyPressed(KeyEvent e) {}
+
 }

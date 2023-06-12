@@ -6,7 +6,7 @@ import java.util.List;
 public class Memoria {
 	
 	private enum TipoComando {
-		ZERAR, INVERTER, PORCENTAGEM, NUMERO, DIV, MULT, SUB, SOMA, IGUAL, VIRUGLA
+		ZERAR, INVERTER, PORCENTAGEM, NUMERO, DIV, MULT, SUB, SOMA, IGUAL, VIRUGLA, BACKSPACE
 	};
 	
 	private final List<MemoriaObservador> observadores = new ArrayList<>();
@@ -65,6 +65,8 @@ public class Memoria {
 			String resultadoPString = Double.toString(resultadoPorcentagem);
 			textoAtual = textoBuffer.isEmpty() ? "0" : resultadoPString;
 					
+		} else if(tipoComando == TipoComando.BACKSPACE) {
+			textoAtual = textoAtual.substring(0, textoAtual.length() - 1);
 		} else {
 			substituir = true;
 			textoAtual = obterResuldadoOperacao();
@@ -134,6 +136,8 @@ public class Memoria {
 				return TipoComando.IGUAL;
 			} else if(",".equals(texto) && !textoAtual.contains(",")) {
 				return TipoComando.VIRUGLA;
+			} else if("apagar".equals(texto)) {
+				return TipoComando.BACKSPACE;
 			}
 		}
 		return null;
