@@ -39,7 +39,7 @@ public class Memoria {
 		
 		TipoComando tipoComando = detectarTipoComando(texto);
 		
-		if(tipoComando == TipoComando.ZERAR) {
+		if(tipoComando == TipoComando.ZERAR || tipoComando == null) {
 			textoAtual = "";
 			textoBuffer = "";
 			substituir = false;
@@ -57,15 +57,13 @@ public class Memoria {
 				textoAtual = substituir ? texto : textoAtual + texto;
 				substituir = false;
 			}
-
 		} else if(tipoComando == TipoComando.PORCENTAGEM) {
 			double numeroAtualP = Double.parseDouble(textoAtual);
 			double numeroBufferP = Double.parseDouble(textoBuffer);
 			
 			double resultadoPorcentagem = (numeroAtualP/100)*numeroBufferP;
 			String resultadoPString = Double.toString(resultadoPorcentagem);
-			
-			textoAtual = textoBuffer.isEmpty() ? "0" : resultadoPString; 
+			textoAtual = textoBuffer.isEmpty() ? "0" : resultadoPString;
 					
 		} else {
 			substituir = true;
@@ -120,8 +118,10 @@ public class Memoria {
 				return TipoComando.ZERAR;
 			} else if("+/-".equals(texto)) {
 				return TipoComando.INVERTER;
-			} else if("%".equals(texto)) {
+			} else if("%".equals(texto) && !textoBuffer.isEmpty()) {
 				return TipoComando.PORCENTAGEM;
+			} else if("%".equals(texto) && textoBuffer.isEmpty()) {
+				return null;
 			} else if("/".equals(texto)) {
 				return TipoComando.DIV;
 			} else if("*".equals(texto)) {
