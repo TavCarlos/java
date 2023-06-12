@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-public class Calculadora extends JFrame {
+public class Calculadora extends JFrame  {
 
 	public Calculadora() {
 
