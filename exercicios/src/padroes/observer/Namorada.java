@@ -14,5 +14,4 @@ public class Namorada implements ChegadaAniversarianteObservador {
 		System.out.println("Esperar um pouco...");
 		System.out.println("SURPRESA!!!!!");
 	}
-	
 }

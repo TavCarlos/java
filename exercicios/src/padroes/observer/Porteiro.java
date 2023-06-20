@@ -13,7 +13,8 @@ public class Porteiro {
 
 	private List<ChegadaAniversarianteObservador> observadores = new ArrayList<>();
 	
-	public void registrarObservadores(ChegadaAniversarianteObservador observador) {
+	public void registrarObservadores(ChegadaAniversarianteObservador observador) { //vai receber como parâmetro alguém que
+		//implementa essa interface;
 		observadores.add(observador);
 	}
 	

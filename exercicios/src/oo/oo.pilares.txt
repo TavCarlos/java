@@ -1,0 +1,80 @@
+encapsulamento - Capacidade de esconder parte do código para que não exponha tudo em todos os momentos.
+
+Consigo utilizar um computador mas não preciso saber internamente como esse computador funciona, não preciso conseguir a memória, processador do computador. Tudo isso está escondido e encapsulado;
+Só precisando conhecer a interface de comunicação entre você e o sistema.
+Mas não precisa conhecer o detalhe de implementação.
+
+O encapsulamento pode esconder métodos ou atributos tanto para os usuário quanto para outro objetos também.
+
+Se um objeto a tem relação com o objeto b.se dentro do objeto b tiver private métodos, o objeto a não poderá acessa-los.
+Somente a própria classe pode acessar o métodos privados.
+
+Private -> um atributo ou método Só pode ser acessado dentro da própria classe.
+
+package (padrão)-> o atributo/método só pode ser acessado por classes do mesmo pacote.
+
+Protected -> vai depender da herança. pode acessar atributos de outros pacotes desde que ele seja herdado
+
+Public -> qualquer classe do sistema pode acessar o atributo e método.
+--------------------------------------//--------------------------
+
+Herança - Forma de reuso código.
+Devemos piorizar a composição no lugar da Herança quando falamos em reuso de código.
+No mundo real tem mais composição do que herança. Em software é preferível que tenha mais composição do que herança.
+
+Como identificar se usa composição ou herança na hora de reusar código? não é regra 100%.
+
+Composição: palavra chave -> Tem um(a):
+- Carro tem um Motor
+- Casa tem uma cozinha
+- Cliente tem umas compras
+- Compra tem uns items
+
+Herança: palavra chave -> é um(a):
+- civic é um carro
+- gato é um mamífero
+- maça é uma fruta.
+
+Todo carro tem métodos como ligar, desligar, acelerar. Logo esses métodos podem ser passados por herança.
+
+Geralmente na herança você tem a ideia de algo mais genérico e a partir que você vai descendo na estrutura de heirarquia você vai ficando mais expecífico.
+
+Animal -> é um -> anfíbio -> é um -> sapo;
+Animal -> é um -> mamífero -> é um -> mamífero aquáticos;
+Animal -> é um -> mamífero -> é um mamífero terrestres;
+
+e ainda é possível especificar ainda mais, entretanto não é interessante ter hierarquias longas.
+Quando há herança você sempre vai ganhando os atributos que existe nas classes acima (classe pai); ou seja, o sapo vai receber tudo de anfíbio e tudo de animal.
+Super classe é a nomeclatura para a classe + genérica;
+Sub CLasse é a nomeclatura para a classe + específica;
+
+------------------------------------\\---------------------------
+Polimorfismo -> multiplas formas.
+Há dois tipos de polimorfismo dinâmico e estático.
+
+Polimorfismo estático -> sobrecarga.
+Podemos ter dentro de uma classe um método com o mesmo nome porém com parâmetros diferentes, com isso ocorre a "sobrecarga".
+Ele é estático pois você escreveu estaticamente no seu código, ele não ocorreu de forma dinâmica, durante a execução do código.
+
+Polimofismo dinâmico -> Um pré requesito para isso acontecer você precisa ter herança.
+
+Imaginando um cenário que há 3 classes. Carro, civic e ferrari.
+Sendo carro uma classe mais genérica e civic/ferrari a subclasse.
+
+Posso instânciar um civic através de: Civic c = new Civic();
+Mas é possível fazer:
+Carro c = new Civic(); ou seja, instanciei um carro específico através do construtor do civic e atribui a um tipo mais genérica.
+Aconteceu isso por conta da herança, que é possível fazer esse tipo de atribuição.
+
+O polimorfismo acontece quando:
+a variável c é um tipo genérico, logo é possível fazer:
+c = new Ferrari(); pois ferrari também é um carro.
+Com isso, acabo por mudar a forma de c.
+A variável c é do tipo carro, mas uma hora ela pode ser do tipo civic, outra hora pode ser do topo ferrarri.
+Ou seja, utilizando a mesma variável do tipo mais genérico atribuir objetos de multiplas formas, ou seja, obejtos polimorficos.
+
+Outro exemplo:
+Quando cria método chamado -> void estacionar(Civid c){...}
+Esse métdo só vai suportar o civic ou qualquer subclasse dele.
+Entretanto para fazer o polimorfismo eu posso utilizar:
+void estacionar(carro c){...} na qual eu posso colocar passar um civic ou a ferrari como parâmetro. Assim a variável c irá ter várias formas.

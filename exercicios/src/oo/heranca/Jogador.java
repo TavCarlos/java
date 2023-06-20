@@ -2,22 +2,47 @@ package oo.heranca;
 
 public class Jogador {
 	
-	static int dano;
-	int vida = 100;
-	int x;
-	int y;
+	private int vida = 100;
+	private int x;
+	private int y;
 	
-	Jogador(){
+	//getters and Setters
+	
+	public int getVida() {
+		return vida;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	
+	//Construtor
+	protected Jogador(){
 		this(0, 0); //se o jogafor não colocar as coordenadas por padrão irá colocar 0 , 0;
 		//além de chamar o construtor abaixo
 	}
 	
-	Jogador(int x, int y){
-		this.x = x;
-		this.y = y;
+	protected Jogador(int x, int y){
+		setX(x);
+		setY(y);
 	}
 	
-	boolean atacar(Jogador oponente) {
+	
+	//métodos
+	public boolean atacar(Jogador oponente) {
 		
 		int deltaX = Math.abs(x - oponente.x); //Math.abs retorna um valor positivo caso seja negativo.
 		int deltaY = Math.abs(y - oponente.y);
@@ -34,7 +59,7 @@ public class Jogador {
 		
 	}
 	
-	boolean andar(Direcao direcao) { 
+	public boolean andar(Direcao direcao) { 
 		switch(direcao) {
 		case NORTE: //se fosse em If era necessário -> direcao.NORTE;
 			y--;

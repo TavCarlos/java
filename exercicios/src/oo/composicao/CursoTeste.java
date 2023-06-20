@@ -37,5 +37,13 @@ public class CursoTeste {
 		for(Curso curso: aluno1.cursos) {
 			System.out.println("aluno1 está matriculado em: " + curso.nome);
 		}
+		
+		System.out.println(aluno1.cursos.get(0).alunos); //todos os alunos matriculados no primeiro curso que o aluno1 está
+		//matriculado.
+		
+		Curso cursoEncontrado = aluno1.obterCursoPorNome("React");
+		if(cursoEncontrado != null){
+			System.out.println(cursoEncontrado.alunos);
+		}
 	}
 }

@@ -5,12 +5,12 @@ public class Monstro extends Jogador {//significa que a classe Heroi vai herdar 
 
 	//por isso não precisei definir métodos aqui, pois a classe filha(heroi) herdou da classe pai(jogador);
 	
-	Monstro(){
+ public Monstro(){
 		super(0 , 0); //chama o construtor padrão com as coordenadas 0, 0
 		//também caberia o this() ao invés do super para chamar o construtor abaixo
 	}
 	
-	Monstro(int x , int y){
+ public Monstro(int x , int y){
 		super(x , y);
 	}
 	
