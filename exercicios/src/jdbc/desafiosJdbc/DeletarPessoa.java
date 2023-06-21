@@ -37,15 +37,18 @@ public class DeletarPessoa {
 				sql = "DELETE FROM pessoas WHERE codigo = ?";
 				stmt = conexao.prepareStatement(sql);
 				stmt.setInt(1, id);
-				stmt.execute();
-				System.out.println("Cadastro deletado com sucesso!");
+				if(stmt.executeUpdate() > 0) { //executeUpdate -> retorna int quantas linhas foram afetadas 
+					System.out.println("Cadastro deletado com sucesso!");
+				} else {
+					System.out.println("Ocorreu um erro. Tente novamente.");
+				}
 			} else {
 				System.out.println("Operação não realizada.");
 			}	
 			
+		} else {
+			System.out.println("Cadastro não encontrado.");
 		}
-		
-		
 		
 		stmt.close();
 		conexao.close();
