@@ -20,6 +20,8 @@ public class ObterUsuarios {
 		//TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
 		//query.setMaxResults(6);
 		
+		
+		//utiliando o jpql eu estou buscando a informação dentro do objeto e não da tabela.
 		List<Usuario> usuarios = em
 				.createQuery(jpql, Usuario.class)
 				.setMaxResults(6)
