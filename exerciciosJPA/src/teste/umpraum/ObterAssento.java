@@ -12,7 +12,6 @@ public class ObterAssento {
 		Cliente cliente =  dao.obterPorId(1L);
 		
 		System.out.println(cliente.getAssento().getNome());
-		
 	}
 	
 	/*
