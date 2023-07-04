@@ -1,19 +1,14 @@
-package modelo.muitosparamuitos;
+package modelo.composicao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "atores")
-public class Ator {
+@Table(name = "Fornecedores")
+public class Fornecedor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +16,16 @@ public class Ator {
 	
 	private String nome;
 	
-	@ManyToMany(mappedBy = "atores", cascade = CascadeType.ALL)
-	private List<Filme> filmes = new ArrayList<>();
+	private Endereco endereco;
 	
-	public Ator() {
-
+	public Fornecedor() {
 	}
 
-	public Ator(String nome) {
+	public Fornecedor(String nome) {
 		super();
 		this.nome = nome;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -49,12 +43,14 @@ public class Ator {
 		this.nome = nome;
 	}
 
-	public List<Filme> getFilmes() {
-		return filmes;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setFilmes(List<Filme> filmes) {
-		this.filmes = filmes;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
+	
+	
 	
 }

@@ -1,6 +1,6 @@
 package teste.muitosparamuitos;
 
-import java.util.List;
+//import java.util.List;
 
 import infra.DAO;
 import modelo.muitosparamuitos.Ator;
@@ -14,9 +14,9 @@ public class ObterFilmeAtor {
 		
 		Filme filme = dao.obterPorId(2L); //vai me retornar o filme
 		
-		List<Ator> atores = filme.getAtores(); //através do filme que pesquisei, eu vejo a lista de atores associados a ele.
+		//List<Ator> atores = filme.getAtores(); //através do filme que pesquisei, eu vejo a lista de atores associados a ele.
 		
-		for(Ator ator: atores) {
+		for(Ator ator: filme.getAtores()) {
 			System.out.println(ator.getNome());
 		}
 	}
