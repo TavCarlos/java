@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+
+	<named-query name="ObterfilmesComNotaMaiorQue">
+	
+		<query>
+			select distinct f from Filme f
+			join fetch f.atores 
+			where f.nota >= :nota
+			<!-- Join fetch irá retornar um inner fetch, com ele irá resolver o N+1 problem
+			, assim o hibernate não irá fazer um fetch para autores e depois um fetch para notas,
+			ele irá puxar tudo em uma query só, aumentando a produtividade.
+			Caso seja necessário fazer um LEFT JOIN, utilizar entityGraph (tina xing) -->
+		</query>
+	
+	</named-query>
+
+	<named-native-query name="ObterMediaGeralDosFilmes">
+		<query>
+			select avg(nota) as media from filmes
+		</query>
+	
+	</named-native-query>
+	
+	
+	<sql-result-set-mapping name="NotaFilmeMap">
+		<constructor-result target-class="modelo.consulta.NotaFilme">
+			<column name="media" class="java.lang.Double"/>
+		</constructor-result>
+	
+	</sql-result-set-mapping>
+
+
+</entity-mappings>
