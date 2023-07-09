@@ -24,5 +24,4 @@ public class Quadrado extends Rectangle {
 		i++;
 		if(i == 6) i = 0;
 	}
-	
 }
