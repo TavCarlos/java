@@ -12,7 +12,10 @@ public class AppLayout extends Application{
 		Parent raiz;
 //		raiz = new TesteAnchorPane();
 //		raiz = new TesteBorderPane();
-		raiz = new TesteFlowPane();
+//		raiz = new TesteFlowPane();
+//		raiz = new TesteGridPane();
+//		raiz = new TesteStackPane();
+		raiz = new TesteTilePane();
 		
 		Scene principal = new Scene(raiz, 800, 600); //Scene recebe um Parent como parâmetro, 
 		//utilizei 'raiz' pela didática.

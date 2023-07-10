@@ -25,5 +25,8 @@ public class TesteBorderPane extends BorderPane {
 	/*
 	 * Diferentemente do AnchorPane não é necessário utilizar o getChildren().add() no objeto criado
 	 * Pois já é setado automaticamente.
+	 * 
+	 * Não é muito flexível como o AnchorPane pois o lado é setado automaticamente
+	 * não sendo possível modificar a posição e o dimensionamento dos elementos filhos.
 	 * */
 }
