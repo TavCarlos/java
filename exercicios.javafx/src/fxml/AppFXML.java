@@ -16,7 +16,7 @@ public class AppFXML extends Application{
 		URL arquivoFXML = getClass().getResource("/fxml/Login.fxml"); //armazenando a url do arquivo fxml
 		GridPane raiz = FXMLLoader.load(arquivoFXML);
 		
-		Scene cena = new Scene(raiz, 350, 400);
+		Scene cena = new Scene(raiz, 350, 350);
 		cena.getStylesheets().add(arquivoCSS); //getStylesheets precisa de String como parâmetro, por isso .toExternaForm();
 		
 		primaryStage.setResizable(false); //nao permite o usuáro aumentar o tamanho da tela.
