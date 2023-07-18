@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.exerciciossb.models.Cliente;
+import com.example.exerciciossb.models.entity.Cliente;
 
 @RestController
 @RequestMapping(path = "/clientes")
 public class ClienteController {
-
+	
 	@GetMapping(path = "/qualquer")
 	public Cliente obterCliente() {
 		return new Cliente(1, "Carlos", "123.456.789-00");

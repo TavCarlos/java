@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.exerciciossb.models.ClienteTeste;
-import com.example.exerciciossb.models.DependenteTeste;
-import com.example.exerciciossb.models.EnderecoTeste;
+import com.example.exerciciossb.models.entity.ClienteTeste;
+import com.example.exerciciossb.models.entity.DependenteTeste;
+import com.example.exerciciossb.models.entity.EnderecoTeste;
 
 @RestController
 @RequestMapping(path = "/clientesTeste")
