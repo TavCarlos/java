@@ -3,6 +3,9 @@ package com.example.exerciciossb.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,13 +49,37 @@ public class ProdutoController {
 	public Optional<Produto> obterProdutoPorId(@PathVariable int id){
 		return produtoRepository.findById(id);
 	}
-
+	
+	//CONSULTA PAGINADA
+	@GetMapping(path = "/page/{numeroPagina}")
+	public Iterable<Produto> obterTodosPorPagina(@PathVariable int numeroPagina){
+		Pageable page = PageRequest.of(numeroPagina, 2); //Paginação para não mostrar tudo de uma vez. (numero da página/ elementos)
+		return produtoRepository.findAll(page);
+	}
+	
+	//ENCONTRAR POR NOME
+	@GetMapping(path = "/search/{parteNome}")
+	public Iterable<Produto> obterProdutoPorNome(@PathVariable String parteNome){
+		return produtoRepository.findByNomeContainingIgnoreCase(parteNome);
+	} 
+	
+	
 //	@PutMapping
 //	public Produto AtualizarProduto(@Valid Produto produto) {
 //		produtoRepository.save(produto);
 //		return produto;
 //	}
 
+	@DeleteMapping(path = "/{id}")
+	public String deletarProdutoPorId(@PathVariable int id) {
+		
+		if(produtoRepository.existsById(id)) {
+			produtoRepository.deleteById(id);
+			return "Deletado com Sucesso";
+		}
+		return "ID não encontrado";
+	}
+	
 }
 
 /*
